@@ -1,6 +1,6 @@
 package interview.questions;
 
-public class Singleton {
+public class Singleton implements Cloneable {
 	
 	private static volatile Singleton instance=null;
 	private String data;
@@ -20,6 +20,10 @@ public class Singleton {
 		return instance;
 	}
 	
-	
+	@Override
+    protected Object clone() throws CloneNotSupportedException {
+        // Prevent cloning to maintain Singleton integrity
+        throw new CloneNotSupportedException();
+    }
 
 }
